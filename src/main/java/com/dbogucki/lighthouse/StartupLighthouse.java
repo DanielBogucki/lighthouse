@@ -4,13 +4,16 @@ import com.dbogucki.bulbapi.devices.Bulb;
 import com.dbogucki.bulbapi.devices.YeelightBulb;
 import com.dbogucki.bulbapi.exceptions.DeviceSocketException;
 import com.dbogucki.lighthouse.enums.Action;
+import com.dbogucki.lighthouse.enums.SensorType;
 import com.dbogucki.lighthouse.models.Room;
 import com.dbogucki.lighthouse.models.Schedule;
+import com.dbogucki.lighthouse.models.Sensor;
 import com.dbogucki.lighthouse.repositories.RoomsCollection;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
@@ -26,13 +29,13 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
         Schedule noc2 = new Schedule("Noc2", LocalTime.parse("00:00"), LocalTime.parse("06:30"), Action.POWER_OFF);
         Schedule poranek = new Schedule("Poranek", LocalTime.parse("06:30"), LocalTime.parse("07:30"), Action.POWER_OFF);
         Schedule praca = new Schedule("Praca", LocalTime.parse("16:30"),LocalTime.parse("18:00"),Action.WORK_LIGHT);
+        Schedule odpoczynek = new Schedule ("Odpoczynek", LocalTime.parse("18:00"),LocalTime.parse("20:00"),Action.LAZY_LIGHT);
 
-        System.out.println(noc1.between());
-        System.out.println(noc2.between());
-        pokoj.addSchedule(noc1);
-        pokoj.addSchedule(noc2);
+        //pokoj.addSchedule(noc1);
+        //pokoj.addSchedule(noc2);
         pokoj.addSchedule(poranek);
         pokoj.addSchedule(praca);
+        pokoj.addSchedule(odpoczynek);
 
         try {
             YeelightBulb bulb = new YeelightBulb("192.168.8.111");
@@ -41,9 +44,17 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
             e.printStackTrace();
         }
 
+        pokoj.setLightSensor(new Sensor("BH1750", SensorType.BH1750));
+
 
         RoomsCollection.addRoom(pokoj);
-        RoomsCollection.updateRooms();
+        try {
+            RoomsCollection.updateRooms();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         List<Room> pokoje = RoomsCollection.getRooms();
 
