@@ -8,11 +8,11 @@ import com.dbogucki.lighthouse.enums.LightValue;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import javax.script.ScriptException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -26,8 +26,8 @@ public class Room {
     private List<Schedule> schedules = new ArrayList<>();
     private Sensor lightSensor;
 
-    private int lightValue = 0;
-    private int changeLightValue = 0;
+    private double lightValue = 0;
+    private double changeLightValue = 100;
 
     //TODO store and check current/last Schedule
 
@@ -87,33 +87,24 @@ public class Room {
 
     public void readSensor() throws IOException, InterruptedException {
         if (this.lightSensor != null) {
-            Resource resource = new ClassPathResource(lightSensor.getType().getPath());
-            File file = resource.getFile();
-            System.out.println(file.getAbsolutePath());
-            System.out.println(file.getPath());
-
-            Process p = Runtime.getRuntime().exec("sudo python " + file.getAbsolutePath()); //"/bin/bash", "-c",
-            p.waitFor();
-
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    lightValue = Integer.parseInt(line);
-                }
-            }
+            lightValue = lightSensor.getValue();
         }
     }
 
     public void updateRoom() throws IOException, InterruptedException {
-        this.readSensor();
         Schedule schedule = this.checkForSchedule();
         if (schedule != null) {
+            System.out.println("Found schedule " + schedule.getName());
             this.setLights(schedule.getAction());
-        } else if (this.getLightSensor() != null && this.getLightValue() < LightValue.MIN.getValue()) {
-            this.setLights(Action.POWER_ON);
-        }
-        else if(this.getLightSensor() != null && this.getLightValue() > LightValue.MIN.getValue() + this.getChangeLightValue()){
-            this.setLights(Action.POWER_OFF);
+        } else {
+            this.readSensor();
+            if (this.getLightSensor() != null && this.getLightValue() < LightValue.MIN.getValue()) {
+                this.setLights(Action.POWER_ON);
+            }
+            if (this.getLightSensor() != null && this.getLightValue() > LightValue.MIN.getValue() + this.getChangeLightValue())
+            {
+                this.setLights(Action.POWER_OFF);
+            }
         }
     }
 
@@ -157,19 +148,19 @@ public class Room {
         this.lightSensor = lightSensor;
     }
 
-    public int getLightValue() {
+    public double getLightValue() {
         return lightValue;
     }
 
-    public void setLightValue(int lightValue) {
+    public void setLightValue(double lightValue) {
         this.lightValue = lightValue;
     }
 
-    public int getChangeLightValue() {
+    public double getChangeLightValue() {
         return changeLightValue;
     }
 
-    public void setChangeLightValue(int changeLightValue) {
+    public void setChangeLightValue(double changeLightValue) {
         this.changeLightValue = changeLightValue;
     }
 }

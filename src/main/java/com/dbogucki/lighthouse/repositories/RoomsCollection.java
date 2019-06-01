@@ -1,9 +1,6 @@
 package com.dbogucki.lighthouse.repositories;
 
-import com.dbogucki.lighthouse.enums.Action;
-import com.dbogucki.lighthouse.enums.LightValue;
 import com.dbogucki.lighthouse.models.Room;
-import com.dbogucki.lighthouse.models.Schedule;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
@@ -30,7 +27,7 @@ public class RoomsCollection {
         }
     }
 
-    public static void updateRooms() throws IOException, InterruptedException {
+    public static void updateRooms() throws IOException, InterruptedException{
         for (Room room : list) {
             room.updateRoom();
         }
