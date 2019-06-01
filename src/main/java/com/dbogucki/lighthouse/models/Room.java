@@ -5,14 +5,8 @@ import com.dbogucki.bulbapi.exceptions.DeviceSocketException;
 import com.dbogucki.bulbapi.exceptions.ResultException;
 import com.dbogucki.lighthouse.enums.Action;
 import com.dbogucki.lighthouse.enums.LightValue;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
-import javax.script.ScriptException;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -94,7 +88,6 @@ public class Room {
     public void updateRoom() throws IOException, InterruptedException {
         Schedule schedule = this.checkForSchedule();
         if (schedule != null) {
-            System.out.println("Found schedule " + schedule.getName());
             this.setLights(schedule.getAction());
         } else {
             this.readSensor();
