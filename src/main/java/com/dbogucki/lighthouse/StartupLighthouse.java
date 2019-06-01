@@ -53,25 +53,8 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
 
 
         RoomsCollection.addRoom(pokoj);
-        try {
-            RoomsCollection.updateRooms();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
 
-        List<Room> pokoje = RoomsCollection.getRooms();
-
-        System.out.println("Szukam pokoi");
-        for (Room r : pokoje) {
-            Set<Bulb> bulbs = r.getBulbs();
-
-            for (Bulb b : bulbs) {
-                System.out.println(b.getIp());
-            }
-        }
 
     }
 }

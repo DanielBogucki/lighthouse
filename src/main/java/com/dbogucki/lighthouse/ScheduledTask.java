@@ -14,9 +14,12 @@ import java.time.LocalTime;
 public class ScheduledTask {
 
     @Scheduled(fixedRate = 5000)
-    public void work() throws IOException, InterruptedException {
-        System.out.println("Scheduled " + LocalTime.now());
-        RoomsCollection.updateRooms();
+    public void work() {
+        try {
+            RoomsCollection.updateRooms();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

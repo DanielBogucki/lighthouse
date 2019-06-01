@@ -101,8 +101,7 @@ public class Room {
             if (this.getLightSensor() != null && this.getLightValue() < LightValue.MIN.getValue()) {
                 this.setLights(Action.POWER_ON);
             }
-            if (this.getLightSensor() != null && this.getLightValue() > LightValue.MIN.getValue() + this.getChangeLightValue())
-            {
+            if (this.getLightSensor() != null && this.getLightValue() > LightValue.MIN.getValue() + this.getChangeLightValue()) {
                 this.setLights(Action.POWER_OFF);
             }
         }
