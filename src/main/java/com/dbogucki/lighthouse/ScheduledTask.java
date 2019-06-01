@@ -5,6 +5,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.script.ScriptException;
+import java.io.IOException;
 import java.time.LocalTime;
 
 @EnableScheduling
@@ -12,7 +14,7 @@ import java.time.LocalTime;
 public class ScheduledTask {
 
     @Scheduled(fixedRate = 5000)
-    public void work() {
+    public void work() throws IOException, InterruptedException {
         System.out.println("Scheduled " + LocalTime.now());
         RoomsCollection.updateRooms();
     }

@@ -1,9 +1,9 @@
 package com.dbogucki.lighthouse.repositories;
 
 import com.dbogucki.lighthouse.models.Room;
-import com.dbogucki.lighthouse.models.Schedule;
 import org.springframework.stereotype.Repository;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,12 +27,9 @@ public class RoomsCollection {
         }
     }
 
-    public static void updateRooms() {
+    public static void updateRooms() throws IOException, InterruptedException{
         for (Room room : list) {
-            Schedule schedule = room.checkForSchedule();
-            if (schedule != null) {
-                room.setLights(schedule.getAction());
-            }
+            room.updateRoom();
         }
     }
 }
