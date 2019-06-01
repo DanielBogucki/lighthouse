@@ -13,11 +13,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import javax.script.ScriptException;
-import java.io.IOException;
 import java.time.LocalTime;
-import java.util.List;
-import java.util.Set;
 
 @Component
 public class StartupLighthouse implements ApplicationListener<ContextRefreshedEvent> {
@@ -53,25 +49,8 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
 
 
         RoomsCollection.addRoom(pokoj);
-        try {
-            RoomsCollection.updateRooms();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
 
-        List<Room> pokoje = RoomsCollection.getRooms();
-
-        System.out.println("Szukam pokoi");
-        for (Room r : pokoje) {
-            Set<Bulb> bulbs = r.getBulbs();
-
-            for (Bulb b : bulbs) {
-                System.out.println(b.getIp());
-            }
-        }
 
     }
 }
