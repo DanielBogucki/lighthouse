@@ -28,7 +28,7 @@ public class RoomController {
     @RequestMapping("/{roomId}")
     public String roomDetails(@PathVariable("roomId") int id, Model model){
 
-        model.addAttribute("Room", RoomsCollection.getRoomById(id));
+        model.addAttribute("room", RoomsCollection.getRoomById(id));
         return "room";
         }
 }

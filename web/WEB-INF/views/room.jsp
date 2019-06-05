@@ -43,17 +43,17 @@
             <!-- insert the page content here -->
             <h1>${room.name}</h1>
             <br/>
-            <h2>Bulbs:</h2>
+            <h2>Bulbs <button type="button">New</button></h2>
             <p>Yeelight Color Bulb</p>
             <br/>
-            <h2>Sensors</h2>
+            <h2>Sensors <button type="button">Set new</button></h2>
             <p>BH1750</p>
             <br/>
-            <h2>Schedules</h2>
-            <a href="schedule/">Noc</a><br/>
-            <a href="schedule/">Poranek</a><br/>
-            <a href="schedule/">Praca</a><br/>
-            <a href="schedule/">Odpoczynek</a><br/>
+            <h2>Schedules  <button type="button">Add New</button></h2>
+            <button type="button">x</button>  <a href="schedule/">Noc</a><br/>
+            <button type="button">x</button>  <a href="schedule/">Poranek</a><br/>
+            <button type="button">x</button>  <a href="schedule/">Praca</a><br/>
+            <button type="button">x</button>  <a href="schedule/">Odpoczynek</a><br/>
 
         </div>
     </div>
