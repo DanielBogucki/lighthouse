@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Room {
+    private static int seq = 0;
+
+    private int roomId;
     private String name;
 
     private Set<Bulb> bulbs = new HashSet<>();
@@ -31,6 +34,7 @@ public class Room {
 
     public Room(String name) {
         this.name = name;
+        roomId = seq++;
     }
 
     public Schedule checkForSchedule() {
@@ -122,6 +126,10 @@ public class Room {
 
     public List<Schedule> getSchedules() {
         return schedules;
+    }
+
+    public int getRoomId() {
+        return roomId;
     }
 
     public String getName() {

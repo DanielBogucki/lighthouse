@@ -25,9 +25,9 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li class="selected"><a href="index">Home</a></li>
-                <li><a href="bulbs/search">Search Bulbs</a></li>
-                <li><a href="rooms">Rooms</a></li>
+                <li><a href="index">Home</a></li>
+                <li class="selected"><a href="bulbs/search">Search Bulbs</a></li>
+                <li><a href="/rooms">Rooms</a></li>
                 <li><a href="about">About</a></li>
             </ul>
         </div>
@@ -40,20 +40,13 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <h1>Welcome to lighthouse management system</h1>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <h2>Browser Compatibility</h2>
-            <p>This template has been tested in the following browsers:</p>
-            <ul>
-                <li>Internet Explorer 8</li>
-                <li>Internet Explorer 7</li>
-                <li>FireFox 3.5</li>
-                <li>Google Chrome 6</li>
-                <li>Safari 4</li>
-            </ul>
+            <h1>Devices found in network</h1>
+            <ol>
+                <c:forEach var="bulb" items="${Bulbs}">
+                    <a href="addBulb/${bulb}">${bulb.ip}:${bulb.port}</a>  ${bulb.name}
+                    <br/>
+                </c:forEach>
+            </ol>
         </div>
     </div>
     <div id="content_footer"></div>

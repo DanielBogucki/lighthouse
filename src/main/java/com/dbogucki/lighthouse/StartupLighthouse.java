@@ -21,6 +21,8 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         Room pokoj = new Room("Mój pokój");
+        Room salon = new Room("Sypialnia");
+        Room kuchnia = new Room("Kuchnia");
 
         Schedule noc1 = new Schedule("Noc1", LocalTime.parse("22:00"), LocalTime.parse("23:59"), Action.POWER_OFF);
         Schedule noc2 = new Schedule("Noc2", LocalTime.parse("00:00"), LocalTime.parse("06:30"), Action.POWER_OFF);
@@ -49,6 +51,8 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
 
 
         RoomsCollection.addRoom(pokoj);
+        RoomsCollection.addRoom(salon);
+        RoomsCollection.addRoom(kuchnia);
 
 
 
