@@ -19,14 +19,14 @@
         <div id="logo">
             <div id="logo_text">
                 <!-- class="logo_colour", allows you to change the colour of the text -->
-                <h1><a href="index.html">light<span class="logo_colour">house</span></a></h1>
+                <h1><a href="/">light<span class="logo_colour">house</span></a></h1>
                 <h2>Automated lightning system in your house.</h2>
             </div>
         </div>
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="index">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="bulbs/search">Search Bulbs</a></li>
                 <li class="selected"><a href="rooms">Rooms</a></li>
                 <li><a href="about">About</a></li>
@@ -41,7 +41,9 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <button type="button">new Room</button>
+            <form action="/rooms/add">
+                <button type="submit">Add new Room</button>
+            </form>
 
             <h1>Your rooms</h1>
             <ol>

@@ -18,15 +18,15 @@
         <div id="logo">
             <div id="logo_text">
                 <!-- class="logo_colour", allows you to change the colour of the text -->
-                <h1><a href="index.html">light<span class="logo_colour">house</span></a></h1>
+                <h1><a href="/">light<span class="logo_colour">house</span></a></h1>
                 <h2>Automated lightning system in your house.</h2>
             </div>
         </div>
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="index">Home</a></li>
-                <li class="selected"><a href="bulbs/search">Search Bulbs</a></li>
+                <li><a href="/">Home</a></li>
+                <li class="selected"><a href="/search">Search Bulbs</a></li>
                 <li><a href="/rooms">Rooms</a></li>
                 <li><a href="about">About</a></li>
             </ul>
@@ -42,7 +42,7 @@
             <!-- insert the page content here -->
             <h1>Devices found in network</h1>
             <ol>
-                <c:forEach var="bulb" items="${Bulbs}">
+                <c:forEach var="bulb" items="${bulbs}">
                     <a href="addBulb/${bulb}">${bulb.ip}:${bulb.port}</a>  ${bulb.name}
                     <br/>
                 </c:forEach>

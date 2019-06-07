@@ -19,14 +19,14 @@
         <div id="logo">
             <div id="logo_text">
                 <!-- class="logo_colour", allows you to change the colour of the text -->
-                <h1><a href="index.html">light<span class="logo_colour">house</span></a></h1>
+                <h1><a href="/">light<span class="logo_colour">house</span></a></h1>
                 <h2>Automated lightning system in your house.</h2>
             </div>
         </div>
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="index">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="bulbs/search">Search Bulbs</a></li>
                 <li class="selected"><a href="/rooms">Rooms</a></li>
                 <li><a href="about">About</a></li>
@@ -43,17 +43,33 @@
             <!-- insert the page content here -->
             <h1>${room.name}</h1>
             <br/>
-            <h2>Bulbs <button type="button">New</button></h2>
-            <p>Yeelight Color Bulb</p>
+
+            <h2>Bulbs
+                <form action="/rooms/add">
+                    <button type="submit">Add new Room</button>
+                </form>
+            </h2>
+
+
+            <c:forEach var="bulb" items="${bulbs}">
+                <a href="addBulb/${bulb}">${bulb.ip}:${bulb.port}</a>  ${bulb.name}
+                <br/>
+            </c:forEach>
             <br/>
-            <h2>Sensors <button type="button">Set new</button></h2>
-            <p>BH1750</p>
+            <h2>Sensors
+                <button type="button">Set new</button>
+            </h2>
+            <h3>Name: ${sensor.name} </h3>
+            Type: ${sensor.type}<br/>
+            measurement: ${sensor.value} lx<br/>
             <br/>
-            <h2>Schedules  <button type="button">Add New</button></h2>
-            <button type="button">x</button>  <a href="schedule/">Noc</a><br/>
-            <button type="button">x</button>  <a href="schedule/">Poranek</a><br/>
-            <button type="button">x</button>  <a href="schedule/">Praca</a><br/>
-            <button type="button">x</button>  <a href="schedule/">Odpoczynek</a><br/>
+            <h2>Schedules
+                <button type="button">Add New</button>
+            </h2>
+            <c:forEach var="schedule" items="${schedules}">
+                <button type="button">x</button>
+                <a href="schedule/${name}">${schedule.name}</a><br/>
+            </c:forEach>
 
         </div>
     </div>

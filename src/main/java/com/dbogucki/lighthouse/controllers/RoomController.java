@@ -1,19 +1,11 @@
 package com.dbogucki.lighthouse.controllers;
 
-import com.dbogucki.bulbapi.devices.Bulb;
-import com.dbogucki.bulbapi.discovering.Discoverer;
-import com.dbogucki.bulbapi.discovering.YeelightDiscoverer;
-import com.dbogucki.bulbapi.exceptions.DeviceSocketException;
-import com.dbogucki.bulbapi.exceptions.DiscoveringException;
+import com.dbogucki.lighthouse.models.Room;
 import com.dbogucki.lighthouse.repositories.RoomsCollection;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/rooms")
@@ -26,9 +18,28 @@ public class RoomController {
     }
 
     @RequestMapping("/{roomId}")
-    public String roomDetails(@PathVariable("roomId") int id, Model model){
+    public String roomDetails(@PathVariable("roomId") int id, Model model) {
 
-        model.addAttribute("room", RoomsCollection.getRoomById(id));
+        Room chosen = RoomsCollection.getRoomById(id);
+
+        model.addAttribute("room", chosen);
+        model.addAttribute("bulbs", chosen.getBulbs());
+        model.addAttribute("sensor", chosen.getLightSensor());
+        model.addAttribute("schedules", chosen.getSchedules());
         return "room";
-        }
+    }
+
+    @RequestMapping("/add")
+    public String roomAdd(Model model) {
+        return "addroom";
+    }
+
+    @RequestMapping("/add/{name}")
+    public String roomAddNew(@PathVariable("name") String name, Model model) {
+        Room newRoom = new Room("name");
+        RoomsCollection.addRoom(newRoom);
+        int i = RoomsCollection.getRooms().size()-1;
+        return "room/"+1;
+    }
 }
+

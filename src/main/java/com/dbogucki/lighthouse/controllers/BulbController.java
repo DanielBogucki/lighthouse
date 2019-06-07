@@ -32,7 +32,7 @@ public class BulbController {
             e.printStackTrace();
         }
 
-        model.addAttribute("Bulbs", list);
+        model.addAttribute("bulbs", list);
         return "searchbulbs";
     }
 
