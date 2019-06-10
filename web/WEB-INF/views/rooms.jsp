@@ -6,7 +6,7 @@
 <html>
 <head>
     <link href="<c:url value="/resources/simple1/style.css" />" rel="stylesheet">
-    <title>Main Page</title>
+    <title>Lighthouse - rooms</title>
     <meta name="description" content="website description"/>
     <meta name="keywords" content="website keywords, website keywords"/>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
@@ -27,9 +27,9 @@
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
                 <li><a href="/">Home</a></li>
-                <li><a href="bulbs/search">Search Bulbs</a></li>
-                <li class="selected"><a href="rooms">Rooms</a></li>
-                <li><a href="about">About</a></li>
+                <li><a href="/bulbs/search">Search Bulbs</a></li>
+                <li class="selected"><a href="/rooms">Rooms</a></li>
+                <li><a href="/about">About</a></li>
             </ul>
         </div>
     </div>
@@ -42,7 +42,7 @@
         <div id="content">
             <!-- insert the page content here -->
             <form action="/rooms/add">
-                <button type="submit">Add new Room</button>
+                <button type="submit" >Add new Room</button>
             </form>
 
             <h1>Your rooms</h1>

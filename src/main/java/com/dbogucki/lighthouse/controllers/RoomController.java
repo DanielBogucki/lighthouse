@@ -4,8 +4,8 @@ import com.dbogucki.lighthouse.models.Room;
 import com.dbogucki.lighthouse.repositories.RoomsCollection;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/rooms")
@@ -29,17 +29,19 @@ public class RoomController {
         return "room";
     }
 
-    @RequestMapping("/add")
+
+    @RequestMapping(value = "/add")
     public String roomAdd(Model model) {
+        model.addAttribute("room", new Room("Default"));
         return "addroom";
     }
 
-    @RequestMapping("/add/{name}")
-    public String roomAddNew(@PathVariable("name") String name, Model model) {
-        Room newRoom = new Room("name");
-        RoomsCollection.addRoom(newRoom);
-        int i = RoomsCollection.getRooms().size()-1;
-        return "room/"+1;
+
+    @RequestMapping(value = "/add/new", method = RequestMethod.POST)
+    public String roomAddNew(@ModelAttribute("room") Room room, BindingResult result, Model model) {
+        RoomsCollection.addRoom(room);
+        model.addAttribute("room", room);
+        return "rooms";
     }
 }
 

@@ -47,6 +47,7 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
             e.printStackTrace();
         }
 
+
         pokoj.setLightSensor(new Sensor("BH1750", SensorType.BH1750));
 
 

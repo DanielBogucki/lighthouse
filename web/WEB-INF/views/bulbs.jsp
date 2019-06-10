@@ -1,3 +1,4 @@
+<%@ page import="com.dbogucki.bulbapi.devices.Bulb" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -6,7 +7,7 @@
 <html>
 <head>
     <link href="<c:url value="/resources/simple1/style.css" />" rel="stylesheet">
-    <title>Add room</title>
+    <title>Bulb info</title>
     <meta name="description" content="website description"/>
     <meta name="keywords" content="website keywords, website keywords"/>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
@@ -37,16 +38,19 @@
     <div id="site_content">
         <div class="sidebar">
             <!-- insert your sidebar items here -->
-
         </div>
         <div id="content">
-            <!-- insert the page content here -->
-            <form:form method="post" modelAttribute="room" action="add/new">
-                <form:input path="name" type="text"/>
-                <form:errors path="name"/>
-                <br/>
-                <input type="submit" value="Add"/>
-            </form:form>
+            <p>${bulb.bulb.name}</p>
+            <h1>${bulb.bulb.ip}:${bulb.bulb.port}</h1>
+            <h4>Power: ${bulb.bulb.power}</h4>
+            <h4>Color Mode: ${bulb.bulb.colorMode}</h4>
+            <h4>Brightness: ${bulb.bulb.bright}</h4>
+            <h4>Color temperature: ${bulb.bulb.colorTemperature}</h4>
+            <h4>RGB Value: ${bulb.bulb.RGBvalue}</h4>
+            <h4>HUE Value: ${bulb.bulb.HUEvalue}</h4>
+            <br/>
+            <h4>Room assigned ${room.name}</h4>
+            <br/>
         </div>
     </div>
     <div id="content_footer"></div>

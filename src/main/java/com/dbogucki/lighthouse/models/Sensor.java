@@ -8,13 +8,16 @@ import org.springframework.core.io.Resource;
 import java.io.*;
 
 public class Sensor {
+    private static int seq = 0;
 
+    private int sensorId;
     private String name;
     private SensorType type;
     private String[] connParam;
     private double value;
 
     public Sensor(String name, SensorType type, String... params) {
+        this.sensorId = seq++;
         this.name = name;
         this.type = type;
         connParam = params;
@@ -73,5 +76,9 @@ public class Sensor {
 
     public void setConnParam(String[] connParam) {
         this.connParam = connParam;
+    }
+
+    public int getSensorId(){
+        return sensorId;
     }
 }
