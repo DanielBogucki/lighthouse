@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,24 +54,24 @@ public class BulbController {
         return "bulbs";
     }
 
-    @RequestMapping(value = "/add")
-    public String bulbAdd(Model model) throws DeviceNotRecognizedException, DeviceSocketException {
-
-        try {
-            model.addAttribute("bulb", BulbFactory.getBulb(Category.DEFAULT, "", 0));
-            model.addAttribute("category", Category.values());
-        }catch(Exception e){
-
-        }
+    @RequestMapping(value = "/add/{roomId}", method = RequestMethod.GET)
+    public String bulbAdd(@PathVariable("roomId") int roomId, Model model) throws DeviceNotRecognizedException, DeviceSocketException {
+        model.addAttribute("room", RoomsCollection.getRoomById(roomId));
+        model.addAttribute("categories", Category.values());
         return "addbulb";
     }
 
-    @RequestMapping(value = "/add/new/{roomId}", method = RequestMethod.POST)
-    public String bulbAddNew(@RequestParam("roomId") int roomId, @ModelAttribute("bulb") Bulb bulb, BindingResult result, Model model) {
-
+    @RequestMapping(value = "/add/new", method = RequestMethod.POST)
+    public String bulbAddNew(HttpServletRequest request, Model model) throws DeviceNotRecognizedException, DeviceSocketException {
+        int roomId = Integer.parseInt(request.getParameter("roomId"));
+        String ip = request.getParameter("ip");
+        int port = Integer.parseInt(request.getParameter("port"));
+        //Category category = Category.valueOf(request.getParameter("category"));
+        Bulb bulb = BulbFactory.getBulb(Category.YEELIGHT, ip, port);
         RoomsCollection.getRoomById(roomId).addBulb(bulb);
-        model.addAttribute("bulb", bulb);
-        return "room";
+
+        model.addAttribute("roomId",roomId);
+        return "addbulb";
     }
 
 

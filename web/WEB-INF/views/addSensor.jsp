@@ -6,7 +6,7 @@
 <html>
 <head>
     <link href="<c:url value="/resources/simple1/style.css" />" rel="stylesheet">
-    <title>Room ${room.name}</title>
+    <title>Add room</title>
     <meta name="description" content="website description"/>
     <meta name="keywords" content="website keywords, website keywords"/>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
@@ -41,38 +41,26 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <h1>${room.name}</h1>
+            <h1>Set new Sensor</h1>
+            <h2>Room: ${room.name}</h2>
             <br/>
-
-            <form action="/bulbs/add/${room.roomId}" method="get">
-                <h2>Bulbs
-                    <button type="submit">Add new</button>
-                </h2>
-            </form>
-            <c:forEach var="bulb" items="${bulbs}">
-                <a href="/bulbs/info?roomId=${room.roomId}&bulbId=${bulb.bulbId}">${bulb.bulb.ip}:${bulb.bulb.port}</a>  ${bulb.bulb.name}
+            <form method="post" action="/sensors/add/new">
+                Name: <input name="name" type="text"/>
                 <br/>
-            </c:forEach>
-            <br/>
-            <h2>Sensors
-                <form action="/sensors/add/${roomId}" method="get">
-                    <button type="submit">Set new</button>
-                </form>
-            </h2>
-            <h3>Name: <a href="sensor/${sensor.sensorId}">${sensor.name} </a></h3>
-            Type: ${sensor.type}<br/>
-            measurement: ${sensor.value} lx<br/>
-            <br/>
-            <h2>Schedules
-                <form action="/schedules/add/${roomId}" method="get">
-                    <button type="button">Add New</button>
-                </form>
-            </h2>
-            <c:forEach var="schedule" items="${schedules}">
-                <button type="button">x</button>
-                <a href="schedule/${name}">${schedule.name}</a><br/>
-            </c:forEach>
-
+                Type: <select property="category">
+                <c:forEach var="type" items="${types}">
+                    <option name="type" value="${type}">
+                        <c:out value="${type.name}"></c:out>
+                    </option>
+                </c:forEach>
+            </select>
+                <br/>
+                Address: <input name="address" type="text" value="0x23">
+                <input type="hidden" name="roomId" value="${roomId}"/>
+                <br/>
+                <br/>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     </div>
     <div id="content_footer"></div>

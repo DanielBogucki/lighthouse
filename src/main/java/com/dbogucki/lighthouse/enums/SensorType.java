@@ -10,4 +10,6 @@ public enum SensorType {
     }
 
     public String getPath(){return path;}
+
+    public String getName(){return this.name();}
 }

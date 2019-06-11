@@ -27,7 +27,7 @@
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
                 <li><a href="/">Home</a></li>
-                <li>class="selected"<a href="/bulbs/search">Search Bulbs</a></li>
+                <li class="selected"><a href="/bulbs/search">Search Bulbs</a></li>
                 <li><a href="/rooms">Rooms</a></li>
                 <li><a href="/about">About</a></li>
             </ul>
@@ -41,13 +41,23 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <form:form method="post" modelAttribute="bulb" action="add/new/${room.roomid}">
-                <form:input path="ip" type="text"/>:
-                <form:input path="port" type="text"/>
-                <form:options path="${category}"/>
+            <h1>Add new Bulb</h1><h2>Room: ${room.name}</h2>
+            <br/>
+            <form method="post" action="/bulbs/add/new">
+                <input name="ip" type="text"/> :
+                <input name="port" type="text"/>
+                <select property="category">
+                    <c:forEach var="cat" items="${categories}">
+                        <option name="category" value="${cat}">
+                            <c:out value="${cat.value}"></c:out>
+                        </option>
+                    </c:forEach>
+                </select>
+                <input type="hidden" name="roomId" value="${roomId}" />
                 <br/>
-                <input type="submit" value="Add"/>
-            </form:form>
+                <br/>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     </div>
     <div id="content_footer"></div>

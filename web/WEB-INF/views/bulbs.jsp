@@ -49,7 +49,7 @@
             <h4>RGB Value: ${bulb.bulb.RGBvalue}</h4>
             <h4>HUE Value: ${bulb.bulb.HUEvalue}</h4>
             <br/>
-            <h4>Room assigned ${room.name}</h4>
+            <h4>Room assigned: ${room.name}</h4>
             <br/>
         </div>
     </div>

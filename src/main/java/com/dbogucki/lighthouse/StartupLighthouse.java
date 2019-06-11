@@ -40,12 +40,14 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
 
         // MQTT i AMQP
 
+        /*
         try {
             YeelightBulb bulb = new YeelightBulb("192.168.43.113");
             pokoj.addBulb(bulb);
         } catch (DeviceSocketException e) {
             e.printStackTrace();
         }
+        */
 
 
         pokoj.setLightSensor(new Sensor("BH1750", SensorType.BH1750));
