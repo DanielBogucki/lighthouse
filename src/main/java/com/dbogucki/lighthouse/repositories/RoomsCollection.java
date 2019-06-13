@@ -20,14 +20,13 @@ public class RoomsCollection {
     }
 
     public static Room getRoomById(Integer id) {
-        if (id < list.size()) {
-            return list.get(id);
-        } else {
-            return null;
+        for (Room room : list) {
+            if (room.getRoomId() == id) return room;
         }
+        return null;
     }
 
-    public static void updateRooms() throws IOException, InterruptedException{
+    public static void updateRooms() throws IOException, InterruptedException {
         for (Room room : list) {
             room.updateRoom();
         }

@@ -13,4 +13,8 @@ public enum Action {
     }
 
     public String getValue(){return value;}
+
+    public static Action getEnum(String s){
+        return Action.valueOf(s);
+    }
 }
