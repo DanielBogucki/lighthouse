@@ -25,7 +25,7 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li class="selected"><a href="/">Home</a></li>
+                <li class="selected"><a href="">Home</a></li>
                 <li><a href="bulbs/search">Search Bulbs</a></li>
                 <li><a href="rooms">Rooms</a></li>
                 <li><a href="about">About</a></li>

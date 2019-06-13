@@ -70,7 +70,8 @@ public class BulbController {
         RoomsCollection.getRoomById(roomId).addBulb(bulb);
 
         model.addAttribute("roomId", roomId);
-        return "addbulb";
+        model.addAttribute("rooms", RoomsCollection.getRooms());
+        return "searchbulbs";
     }
 
     @RequestMapping(value = "/chooseRoom", method = RequestMethod.POST)

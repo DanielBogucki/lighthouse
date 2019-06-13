@@ -25,10 +25,10 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="/">Home</a></li>
-                <li class="selected"><a href="bulbs/search">Search Bulbs</a></li>
-                <li><a href="/rooms">Rooms</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="../">Home</a></li>
+                <li class="selected"><a href="../bulbs/search">Search Bulbs</a></li>
+                <li><a href="../../rooms">Rooms</a></li>
+                <li><a href="../../about">About</a></li>
             </ul>
         </div>
     </div>
@@ -56,7 +56,7 @@
                         <td>${bulb.port}</td>
                         <td>${bulb.power}</td>
                         <td>
-                            <form action="/bulbs/chooseRoom" method="post">
+                            <form action="../bulbs/chooseRoom" method="post">
                                 <input type="hidden" name="ip" value="${bulb.ip}">
                                 <input type="hidden" name="port" value="${bulb.port}">
                                 <button type="submit">Add</button>

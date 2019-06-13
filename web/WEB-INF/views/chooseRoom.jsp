@@ -26,10 +26,10 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="/">Home</a></li>
-                <li class="selected"><a href="bulbs/search">Search Bulbs</a></li>
-                <li><a href="/rooms">Rooms</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="../../">Home</a></li>
+                <li class="selected"><a href="../../bulbs/search">Search Bulbs</a></li>
+                <li><a href="../../rooms">Rooms</a></li>
+                <li><a href="../../about">About</a></li>
             </ul>
         </div>
     </div>
@@ -43,7 +43,7 @@
             <!-- insert the page content here -->
             <h2>${bulb.ip}</h2>
 
-            <form action="/bulbs/add/new" method="post">
+            <form action="../bulbs/add/new" method="post">
                 Room: <select name="roomId" property="Room">
                 <c:forEach var="room" items="${rooms}">
                     <option value="${room.roomId}">

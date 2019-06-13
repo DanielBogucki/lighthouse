@@ -26,10 +26,10 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="/">Home</a></li>
-                <li><a href="/bulbs/search">Search Bulbs</a></li>
-                <li class="selected"><a href="/rooms">Rooms</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="../">Home</a></li>
+                <li><a href="../bulbs/search">Search Bulbs</a></li>
+                <li class="selected"><a href="../rooms">Rooms</a></li>
+                <li><a href="../about">About</a></li>
             </ul>
         </div>
     </div>
@@ -41,7 +41,7 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <form action="/rooms/add">
+            <form action="../rooms/add">
                 <button type="submit" >Add new Room</button>
             </form>
 

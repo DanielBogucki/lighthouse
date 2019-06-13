@@ -26,10 +26,10 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="/">Home</a></li>
-                <li><a href="/bulbs/search">Search Bulbs</a></li>
-                <li class="selected"><a href="/rooms">Rooms</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="../">Home</a></li>
+                <li><a href="../../bulbs/search">Search Bulbs</a></li>
+                <li class="selected"><a href="../../rooms">Rooms</a></li>
+                <li><a href="../../about">About</a></li>
             </ul>
         </div>
     </div>
@@ -44,7 +44,7 @@
             <h1>Set new Sensor</h1>
             <h2>Room: ${room.name}</h2>
             <br/>
-            <form method="post" action="/schedules/add/new">
+            <form method="post" action="../../schedules/add/new">
                 Name: <input name="name" type="text"/>
                 <br/>
                 Start time: <input type="time" name="start"
