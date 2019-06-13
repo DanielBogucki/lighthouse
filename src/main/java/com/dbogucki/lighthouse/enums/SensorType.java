@@ -1,13 +1,15 @@
 package com.dbogucki.lighthouse.enums;
 
 public enum SensorType {
-    BH1750("BH1750");
+    BH1750("python/bh1750.py");
 
-    private String value;
+    private String path;
 
-    SensorType(String type) {
-        this.value = type;
+    SensorType(String path) {
+        this.path = path;
     }
 
-    public String getValue(){return value;}
+    public String getPath(){return path;}
+
+    public String getName(){return this.name();}
 }

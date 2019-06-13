@@ -28,5 +28,7 @@
     </bean>
 
 
+    <mvc:resources mapping="/resources/**" location="/resources/simple1" />
+    <mvc:annotation-driven />
 
 </beans>
