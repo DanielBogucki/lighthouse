@@ -57,7 +57,7 @@ public class Room {
                     case POWER_ON:
                         b.getBulb().setPower(true);
                         b.getBulb().setColorTemperature(LightValue.POWER_ON.getValue());
-                        b.getBulb().setBrightness(100);
+                        b.getBulb().setBrightness(90);
                         break;
 
                     case POWER_OFF:

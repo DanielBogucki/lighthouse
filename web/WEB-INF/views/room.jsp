@@ -26,10 +26,10 @@
         <div id="menubar">
             <ul id="menu">
                 <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-                <li><a href="/">Home</a></li>
-                <li><a href="/bulbs/search">Search Bulbs</a></li>
-                <li class="selected"><a href="/rooms">Rooms</a></li>
-                <li><a href="/about">About</a></li>
+                <li><a href="../">Home</a></li>
+                <li><a href="../bulbs/search">Search Bulbs</a></li>
+                <li class="selected"><a href="../rooms">Rooms</a></li>
+                <li><a href="../about">About</a></li>
             </ul>
         </div>
     </div>
@@ -44,17 +44,17 @@
             <h1>${room.name}</h1>
             <br/>
 
-            <form action="/bulbs/add/${room.roomId}" method="get">
+            <form action="../bulbs/add/${room.roomId}" method="get">
                 <h2>Bulbs
                     <button type="submit">Add new</button>
                 </h2>
             </form>
             <c:forEach var="bulb" items="${bulbs}">
-                <a href="/bulbs/info?roomId=${room.roomId}&bulbId=${bulb.bulbId}">${bulb.bulb.ip}:${bulb.bulb.port}</a>  ${bulb.bulb.name}
+                <a href="../bulbs/info?roomId=${room.roomId}&bulbId=${bulb.bulbId}">${bulb.bulb.ip}:${bulb.bulb.port}</a>  ${bulb.bulb.name}
                 <br/>
             </c:forEach>
             <br/>
-            <form action="/sensors/add/${roomId}" method="get">
+            <form action="../sensors/add/${roomId}" method="get">
                 <h2>Sensors
                     <button type="submit">Set new</button>
                 </h2>
@@ -64,18 +64,18 @@
             measurement: ${sensor.value} lx<br/>
             <br/>
 
-            <form action="/schedules/add/${roomId}" method="get">
+            <form action="../schedules/add/${roomId}" method="get">
                 <h2>Schedules
                     <button type="submit">Add New</button>
                 </h2>
             </form>
 
             <c:forEach var="schedule" items="${schedules}">
-                <form action="/schedules/delete" method="post">
+                <form action="../schedules/delete" method="post">
                     <button type="submit">x</button>
                     <input type="hidden" name="roomId" value="${room.roomId}"/>
                     <input type="hidden" name="scheduleId" value="${schedule.scheduleId}"/>
-                    <a href="/schedules/${room.roomId}/${schedule.scheduleId}">${schedule.name}</a><br/>
+                    <a href="../schedules/${room.roomId}/${schedule.scheduleId}">${schedule.name}</a><br/>
                 </form>
             </c:forEach>
 

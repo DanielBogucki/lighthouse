@@ -4,7 +4,7 @@ public enum LightValue {
     MIN(500),
     REST_TEMP(2700),
     WORK_TEMP(5400),
-    POWER_ON(4000);
+    POWER_ON(3500);
 
     private int value;
 
