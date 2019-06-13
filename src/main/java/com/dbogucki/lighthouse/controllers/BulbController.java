@@ -70,8 +70,17 @@ public class BulbController {
         Bulb bulb = BulbFactory.getBulb(Category.YEELIGHT, ip, port);
         RoomsCollection.getRoomById(roomId).addBulb(bulb);
 
-        model.addAttribute("roomId",roomId);
+        model.addAttribute("roomId", roomId);
         return "addbulb";
+    }
+
+    @RequestMapping(value = "/chooseRoom", method = RequestMethod.POST)
+    public String bulbChooseRoom(HttpServletRequest request, Model model) {
+        model.addAttribute("rooms", RoomsCollection.getRooms());
+        model.addAttribute("ip", request.getParameter("ip"));
+        model.addAttribute("port", request.getParameter("port"));
+        model.addAttribute("category", Category.YEELIGHT);
+        return "chooseRoom";
     }
 
 

@@ -33,7 +33,6 @@ public class Sensor {
         Resource resource = new ClassPathResource(type.getPath());
         File file = resource.getFile();
         String path = file.getAbsolutePath();
-        System.out.println(path);
 
         try {
             ProcessBuilder pb = new ProcessBuilder("sudo", "/usr/bin/python", path);

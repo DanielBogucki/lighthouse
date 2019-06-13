@@ -46,9 +46,9 @@
             <form method="post" action="/bulbs/add/new">
                 <input name="ip" type="text"/> :
                 <input name="port" type="text"/>
-                <select property="category">
+                <select name="category" property="category">
                     <c:forEach var="cat" items="${categories}">
-                        <option name="category" value="${cat}">
+                        <option value="${cat}">
                             <c:out value="${cat.value}"></c:out>
                         </option>
                     </c:forEach>

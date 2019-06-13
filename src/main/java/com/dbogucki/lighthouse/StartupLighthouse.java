@@ -29,16 +29,12 @@ public class StartupLighthouse implements ApplicationListener<ContextRefreshedEv
         Schedule poranek = new Schedule("Poranek", LocalTime.parse("06:30"), LocalTime.parse("07:30"), Action.POWER_OFF);
         Schedule praca = new Schedule("Praca", LocalTime.parse("16:30"), LocalTime.parse("18:00"), Action.WORK_LIGHT);
         Schedule odpoczynek = new Schedule("Odpoczynek", LocalTime.parse("18:00"), LocalTime.parse("20:00"), Action.LAZY_LIGHT);
-        Schedule nowy = new Schedule("nowy", LocalTime.parse("08:00"), LocalTime.parse("12:00"), Action.WORK_LIGHT);
 
-        pokoj.addSchedule(noc1);
-        pokoj.addSchedule(noc2);
-        //pokoj.addSchedule(nowy);
+        //pokoj.addSchedule(noc1);
+        //pokoj.addSchedule(noc2);
         pokoj.addSchedule(poranek);
         pokoj.addSchedule(praca);
         pokoj.addSchedule(odpoczynek);
-
-        // MQTT i AMQP
 
         /*
         try {

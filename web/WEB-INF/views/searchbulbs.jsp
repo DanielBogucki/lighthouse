@@ -6,10 +6,10 @@
 <head>
     <link href="<c:url value="/resources/simple1/style.css" />" rel="stylesheet">
     <title>Search bulbs</title>
-    <meta name="description" content="website description" />
-    <meta name="keywords" content="website keywords, website keywords" />
-    <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <meta name="description" content="website description"/>
+    <meta name="keywords" content="website keywords, website keywords"/>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
+    <link rel="stylesheet" type="text/css" href="style/style.css"/>
 </head>
 <body>
 
@@ -41,17 +41,38 @@
         <div id="content">
             <!-- insert the page content here -->
             <h1>Devices found in network</h1>
-            <ol>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>IP</th>
+                    <th>Port</th>
+                    <th>Power On</th>
+                    <th>Action</th>
+                </tr>
                 <c:forEach var="bulb" items="${bulbs}">
-                    <a href="addBulb/${bulb}">${bulb.ip}:${bulb.port}</a>  ${bulb.name}
-                    <br/>
+                    <tr>
+                        <td>${bulb.name}</td>
+                        <td>${bulb.ip}</td>
+                        <td>${bulb.port}</td>
+                        <td>${bulb.power}</td>
+                        <td>
+                            <form action="/bulbs/chooseRoom" method="post">
+                                <input type="hidden" name="ip" value="${bulb.ip}">
+                                <input type="hidden" name="port" value="${bulb.port}">
+                                <button type="submit">Add</button>
+                            </form>
+                        </td>
+                    </tr>
                 </c:forEach>
-            </ol>
+
+            </table>
         </div>
     </div>
     <div id="content_footer"></div>
     <div id="footer">
-        Copyright &copy; simplestyle_1 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a href="http://www.html5webtemplates.co.uk">Website templates</a>
+        Copyright &copy; simplestyle_1 | <a href="http://validator.w3.org/check?uri=referer">HTML5</a> | <a
+            href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | <a
+            href="http://www.html5webtemplates.co.uk">Website templates</a>
     </div>
 </div>
 

@@ -54,23 +54,29 @@
                 <br/>
             </c:forEach>
             <br/>
-            <h2>Sensors
-                <form action="/sensors/add/${roomId}" method="get">
+            <form action="/sensors/add/${roomId}" method="get">
+                <h2>Sensors
                     <button type="submit">Set new</button>
-                </form>
-            </h2>
+                </h2>
+            </form>
             <h3>Name: <a href="sensor/${sensor.sensorId}">${sensor.name} </a></h3>
             Type: ${sensor.type}<br/>
             measurement: ${sensor.value} lx<br/>
             <br/>
-            <h2>Schedules
-                <form action="/schedules/add/${roomId}" method="get">
-                    <button type="button">Add New</button>
-                </form>
-            </h2>
+
+            <form action="/schedules/add/${roomId}" method="get">
+                <h2>Schedules
+                    <button type="submit">Add New</button>
+                </h2>
+            </form>
+
             <c:forEach var="schedule" items="${schedules}">
-                <button type="button">x</button>
-                <a href="schedule/${name}">${schedule.name}</a><br/>
+                <form action="/schedules/delete" method="post">
+                    <button type="submit">x</button>
+                    <input type="hidden" name="roomId" value="${room.roomId}"/>
+                    <input type="hidden" name="scheduleId" value="${schedule.scheduleId}"/>
+                    <a href="/schedules/${room.roomId}/${schedule.scheduleId}">${schedule.name}</a><br/>
+                </form>
             </c:forEach>
 
         </div>

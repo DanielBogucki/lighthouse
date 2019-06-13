@@ -56,6 +56,8 @@ public class Room {
                 switch (action) {
                     case POWER_ON:
                         b.getBulb().setPower(true);
+                        b.getBulb().setColorTemperature(LightValue.POWER_ON.getValue());
+                        b.getBulb().setBrightness(100);
                         break;
 
                     case POWER_OFF:
@@ -171,5 +173,13 @@ public class Room {
             if (lb.getBulbId() == id) bulb = lb;
         }
         return bulb;
+    }
+
+    public Schedule getSchedule(int id){
+        Schedule schedule = null;
+        for(Schedule s : schedules){
+            if(s.getScheduleId()==id) schedule=s;
+        }
+        return schedule;
     }
 }

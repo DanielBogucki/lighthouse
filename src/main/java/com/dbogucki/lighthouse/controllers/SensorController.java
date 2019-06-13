@@ -10,23 +10,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/sensors")
 public class SensorController {
     @RequestMapping(value = "/add/{roomId}", method= RequestMethod.GET)
-    public String bulbAdd(@PathVariable("roomId") int roomId, Model model) {
+    public String sensorAdd(@PathVariable("roomId") int roomId, Model model) {
         model.addAttribute("room", RoomsCollection.getRoomById(roomId));
         model.addAttribute("types", SensorType.values());
         return "addSensor";
     }
 
     @RequestMapping(value = "/add/new", method = RequestMethod.POST)
-    public String bulbAddNew(HttpServletRequest request){
+    public String sensorAddNew(HttpServletRequest request){
         int roomId = Integer.parseInt(request.getParameter("roomId"));
         String name = request.getParameter("name");
-        SensorType type = SensorType.BH1750;//SensorType.valueOf(request.getParameter("type"));
+        SensorType type = SensorType.valueOf(request.getParameter("type"));
         String addr = request.getParameter("address");
         Sensor sensor = new Sensor(name, type, addr);
         RoomsCollection.getRoomById(roomId).setLightSensor(sensor);

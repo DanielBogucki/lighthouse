@@ -47,9 +47,9 @@
             <form method="post" action="/sensors/add/new">
                 Name: <input name="name" type="text"/>
                 <br/>
-                Type: <select property="category">
+                Type: <select name="type" property="category">
                 <c:forEach var="type" items="${types}">
-                    <option name="type" value="${type}">
+                    <option value="${type}">
                         <c:out value="${type.name}"></c:out>
                     </option>
                 </c:forEach>

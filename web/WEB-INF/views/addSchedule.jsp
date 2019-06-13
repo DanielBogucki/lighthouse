@@ -6,7 +6,7 @@
 <html>
 <head>
     <link href="<c:url value="/resources/simple1/style.css" />" rel="stylesheet">
-    <title>Lighthouse - schedules</title>
+    <title>Add room</title>
     <meta name="description" content="website description"/>
     <meta name="keywords" content="website keywords, website keywords"/>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252"/>
@@ -41,10 +41,31 @@
         </div>
         <div id="content">
             <!-- insert the page content here -->
-            <h2>Name: ${schedule.name}</h2>
-            <h3>Time from ${schedule.startTime} to ${schedule.endTime}</h3>
-            <h3>Action: ${schedule.action.value}</h3>
-
+            <h1>Set new Sensor</h1>
+            <h2>Room: ${room.name}</h2>
+            <br/>
+            <form method="post" action="/schedules/add/new">
+                Name: <input name="name" type="text"/>
+                <br/>
+                Start time: <input type="time" name="start"
+                       min="00:00" max="23:59" value="08:00" required>
+                <br/>
+                End time: <input type="time" name="end"
+                       min="00:00" max="23:59" value="10:00" required>
+                <br/>
+                Type: <select name="action" property="Action">
+                <c:forEach var="action" items="${actions}">
+                    <option value="${action}">
+                        <c:out value="${action.value}"></c:out>
+                    </option>
+                </c:forEach>
+            </select>
+                <br/>
+                <input type="hidden" name="roomId" value="${roomId}"/>
+                <br/>
+                <br/>
+                <input type="submit" value="Submit"/>
+            </form>
         </div>
     </div>
     <div id="content_footer"></div>
